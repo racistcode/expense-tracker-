@@ -10,10 +10,15 @@ create_database()
 
 @app.route("/")
 def home():
+
     connection = sqlite3.connect("expenses.db")
     cursor = connection.cursor()
 
-    cursor.execute("SELECT * FROM expenses ORDER BY id DESC")
+    cursor.execute("""
+        SELECT * FROM expenses
+        ORDER BY id DESC
+    """)
+
     expenses = cursor.fetchall()
 
     connection.close()
@@ -23,22 +28,23 @@ def home():
 
 @app.route("/add", methods=["POST"])
 def add_expense():
-    amount = request.form["amount"]
-    category = request.form["category"]
-    description = request.form["description"]
+
+    amount = request.form.get("amount")
+    category = request.form.get("category")
+    description = request.form.get("description")
+
+    print("RECEIVED:", amount, category, description)
 
     date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     connection = sqlite3.connect("expenses.db")
     cursor = connection.cursor()
 
-    cursor.execute(
-        """
-        INSERT INTO expenses (amount, category, description, date)
-        VALUES (?, ?, ?, ?)
-        """,
+    cursor.execute("""
+        INSERT INTO expenses
         (amount, category, description, date)
-    )
+        VALUES (?, ?, ?, ?)
+    """, (amount, category, description, date))
 
     connection.commit()
     connection.close()

@@ -1,5 +1,14 @@
-print("================================")
-print("       EXPENSE TRACKER")
-print("================================")
+from database import create_table
 
-print("Welcome to your Expense Tracker!")
+
+def main():
+    create_table()
+
+    print("================================")
+    print("       EXPENSE TRACKER")
+    print("================================")
+    print("Database is ready!")
+
+
+if __name__ == "__main__":
+    main()

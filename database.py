@@ -1,13 +1,10 @@
 import sqlite3
 
+import sqlite3
 
-def connect_db():
+
+def create_database():
     connection = sqlite3.connect("expenses.db")
-    return connection
-
-
-def create_table():
-    connection = connect_db()
 
     cursor = connection.cursor()
 
@@ -16,7 +13,8 @@ def create_table():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             amount REAL NOT NULL,
             category TEXT NOT NULL,
-            description TEXT
+            description TEXT,
+            date TEXT NOT NULL
         )
     """)
 

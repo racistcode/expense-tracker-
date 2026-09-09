@@ -1,9 +1,8 @@
 import sqlite3
 
-import sqlite3
-
 
 def create_database():
+
     connection = sqlite3.connect("expenses.db")
 
     cursor = connection.cursor()

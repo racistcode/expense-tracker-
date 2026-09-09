@@ -2,14 +2,14 @@ body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
     margin: 0;
-    padding: 40px;
+    padding: 20px;
 }
 
 .container {
-    max-width: 600px;
-    margin: auto;
+    max-width: 500px;
+    margin: 40px auto;
     background: white;
-    padding: 30px;
+    padding: 25px;
     border-radius: 12px;
 }
 
@@ -17,7 +17,23 @@ h1 {
     text-align: center;
 }
 
-p {
-    text-align: center;
-    color: #666;
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    box-sizing: border-box;
+}
+
+button {
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 16px;
 }
